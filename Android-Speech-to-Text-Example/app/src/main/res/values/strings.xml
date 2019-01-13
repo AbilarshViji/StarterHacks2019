@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Speech to Text</string>
+    <string name="app_name">SafeWalk</string>
     <string name="hint">Tap on mic to start</string>
     <string name="speech_prompt">Talking</string>
     <string name="speech_not_supported">Voice not recognized</string>

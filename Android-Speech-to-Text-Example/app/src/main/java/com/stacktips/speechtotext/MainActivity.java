@@ -79,17 +79,25 @@ public class MainActivity extends AppCompatActivity {
                 if (resultCode == RESULT_OK && null != data) {
                     //result = data.getStringArrayExtra(RecognizerIntent.EXTRA_RESULTS);
                     ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-
+                    String[] results = result.get(0).split(" ");
                     //Sets text on app
                     TextView input = (TextView) findViewById(R.id.textView);
                     input.setText(result.get(0));
 
                     //Checks if keyword is detected, if so dials set phone number
+                    for (int i=0; i<results.length; i++){
+                        if (results[i].equals("pineapple")){
+                            found = true;
+                            dialPhoneNumber("1234567890");
+                        }
+                    }
+                    /**
                     if (result.contains("pineapple")){
                         found = true;
                         dialPhoneNumber("1234567890");
-                    }
-//                    mVoiceInputTv.setText(result.get(0));
+                     }
+                     */
+//                  mVoiceInputTv.setText(result.get(0));
                 }
                 break;
             }
