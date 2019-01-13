@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private RecognizerIntent myText;
     private boolean found = false;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,15 +81,27 @@ public class MainActivity extends AppCompatActivity {
                     //result = data.getStringArrayExtra(RecognizerIntent.EXTRA_RESULTS);
                     ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     String[] results = result.get(0).split(" ");
+                    String empty = new String();
                     //Sets text on app
                     TextView input = (TextView) findViewById(R.id.textView);
                     input.setText(result.get(0));
+                    EditText keyWord = (EditText)findViewById(R.id.keyWordEdit);
+                    String keyWordString = keyWord.getText().toString();
+                    EditText phoneNumber = (EditText)findViewById(R.id.phoneNumberEdit);
+                    String phoneNumberString = phoneNumber.getText().toString();
 
+                    // Default vaules
+                    if (keyWordString.equals(empty)){
+                        keyWordString = "pineapple";
+                    }
+                    if (phoneNumberString.equals(empty)){
+                        phoneNumberString = "1234567890";
+                    }
                     //Checks if keyword is detected, if so dials set phone number
                     for (int i=0; i<results.length; i++){
-                        if (results[i].equals("pineapple")){
+                        if (results[i].equals(keyWordString)){
                             found = true;
-                            dialPhoneNumber("1234567890");
+                            dialPhoneNumber(phoneNumberString);
                         }
                     }
                     /**
