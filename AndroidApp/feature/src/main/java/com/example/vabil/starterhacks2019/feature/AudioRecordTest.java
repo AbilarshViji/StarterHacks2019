@@ -17,7 +17,6 @@ import android.widget.LinearLayout;
 
 import java.io.IOException;
 
-
 public class AudioRecordTest extends AppCompatActivity {
 
     private static final String LOG_TAG = "AudioRecordTest";
@@ -78,7 +77,7 @@ public class AudioRecordTest extends AppCompatActivity {
         mPlayer = null;
     }
 
-    private void startRecording() {
+    public void startRecording() {
         mRecorder = new MediaRecorder();
         mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
@@ -94,7 +93,7 @@ public class AudioRecordTest extends AppCompatActivity {
         mRecorder.start();
     }
 
-    private void stopRecording() {
+    public void stopRecording() {
         mRecorder.stop();
         mRecorder.release();
         mRecorder = null;
@@ -150,7 +149,7 @@ public class AudioRecordTest extends AppCompatActivity {
 
         // Record to the external cache directory for visibility
         mFileName = getExternalCacheDir().getAbsolutePath();
-        mFileName += "/audiorecordtest.3gp";
+        mFileName += "/cry.3gp";
 
         ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
 
